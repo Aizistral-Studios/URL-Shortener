@@ -1,0 +1,74 @@
+<div class="wrapper">
+  @if (!this.shortLink && !this.error) {
+  <p-card header="Shorten your URL">
+    <div class="input">
+      <p class="label">Enter a link to shorten:</p>
+      <input
+        pInputText
+        focusable="false"
+        type="text"
+        placeholder="Enter a link"
+        [(ngModel)]="link"
+        [readOnly]="loading"
+      />
+    </div>
+    <p-footer>
+      <p-button
+        icon="pi pi-check"
+        label="Shorten"
+        severity="primary"
+        class="w-full"
+        [raised]="true"
+        [disabled]="!link"
+        (click)="shortenLink()"
+        [loading]="loading"
+      ></p-button>
+    </p-footer>
+  </p-card>
+  } @else if (this.shortLink && !this.error) {
+  <!-- <div class="result">
+    <p>Result: {{ shortLink }}</p>
+  </div> -->
+  <p-card header="Your link is ready!">
+    <div class="result">
+      <input pInputText type="text" value="{{ shortLink }}" readonly />
+    </div>
+    <p-footer>
+      <div class="link-ready-buttons">
+        <p-button
+          icon="pi pi-copy"
+          label="Copy"
+          severity="primary"
+          class="w-inline"
+          [raised]="true"
+          (click)="copyLink()"
+        ></p-button>
+        <p-button
+          icon="pi pi-times"
+          label="Try another"
+          severity="secondary"
+          class="w-full"
+          [raised]="true"
+          (click)="reset()"
+        ></p-button>
+      </div>
+    </p-footer>
+  </p-card>
+  } @else {
+  <p-card header="An error occurred!">
+    <div class="error">
+      <p>{{ error }}</p>
+    </div>
+    <p-footer>
+      <p-button
+        icon="pi pi-times"
+        label="Try again"
+        severity="secondary"
+        class="w-full"
+        [raised]="true"
+        (click)="reset()"
+      ></p-button>
+    </p-footer>
+  </p-card>
+  }
+</div>

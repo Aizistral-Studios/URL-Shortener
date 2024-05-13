@@ -1,0 +1,15 @@
+.wrapper {
+  width: 320px;
+}
+
+.link-ready-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.w-full {
+  width: 100%;
+  flex-grow: 1;
+}
